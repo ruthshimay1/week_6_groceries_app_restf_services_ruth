@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3 class="no-item" text-center
+  *ngIf="items.length === 0">No
+    items available on the list!</h3>
+  <!--  showing a list of grocery items below that-->
+  <ion-list>
+    <ion-item-sliding
+      *ngFor="let item of items; let i = index">
+      <ion-item style="background-color: rgb(80, 43, 71)">
+        <h2 style="display: inline">{{item.name}}</h2>
+        <p style="display: inline">{{item.quantity}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button
+          (click)="editItem(item, i)"
+          ion-button color="primary"
+          icon-start>
+          <ion-icon name="create">
+          </ion-icon>
+          Edit
+        </button>
+
+        <button
+          (click)="shareItem(item, i)"
+          ion-button color="light"
+          icon-start>
+          <ion-icon name="share">
+          </ion-icon>
+          share
+        </button>
+
+        <button
+          (click)="removeItem(item, i)"
+          ion-button color="secondary"
+          icon-start>
+          <ion-icon name="trash">
+          </ion-icon>
+          Done
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <!--  list of grocery items ends here -->
+
+  <!--  fab for adding things to your app -->
+  <ion-fab bottom right>
+    <button (click)="addItem()" ion-fab
+      mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>
