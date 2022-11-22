@@ -44,7 +44,7 @@ export class GroceriesServiceProvider {
   private handleError(error: Response | any){
     let errMsg: string;
     if (error instanceof Response){
-      const err =error || '';
+      const err = error || '';
       errMsg = `${error.status} - ${error.statusText || ''} ${error}`;
     } else{
       errMsg = error.message ? error.message : error.toString();
@@ -54,9 +54,9 @@ export class GroceriesServiceProvider {
   }
 
   removeItem(id) {
-    console.log("### Remove Item -d = ", id);
-    this.http.delete(this.baseURL + "/api/groceries/").subscribe(res => {
-      this.items = res;
+    console.log("### Remove Item -id = ", id);
+    this.http.delete(this.baseURL + '/api/groceries' + id).subscribe(res => {
+      this.items = res
       this.dataChangeSubject.next(true)
     });
   }

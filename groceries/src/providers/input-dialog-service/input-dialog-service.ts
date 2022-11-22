@@ -16,12 +16,11 @@ export class InputDialogServiceProvider {
   }
   
   showPrompot(item?, index?) {
-    let itemId = ''
-    if(item){
-      itemId = item._id;
-    }
+    // let itemId = ''
+    // if(item){
+    //   itemId = item._id;
+    // }
   
-
     const prompt = this.alertCtrl.create({
       title:item ? 'Edit Item':"Add Item",
       message: item ? "Please Edit item...": "Please enter item name...",
@@ -41,18 +40,21 @@ export class InputDialogServiceProvider {
       buttons: [
         {
           text: 'Cancel',
-          handler: item => {
+          handler: data => {
             console.log('Cancel clicked');
           }
         },
         {
           text: 'Save',
-          handler: item => {
-            console.log('Saved clicked', item); if (index !== undefined){
-            this.dataService.editItem(item, index);
+          handler: data => {
+            console.log('Saved clicked', data); 
+            if (index !== undefined){
+              item.name = data.name;
+              item.quantity =data.quantity;
+              this.dataService.editItem(item, index);
           }
-          else{
-            this.dataService.addItem(item);
+            else{
+             this.dataService.addItem(data);
           }
         }
       }

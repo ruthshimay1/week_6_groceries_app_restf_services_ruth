@@ -29,14 +29,15 @@ export class HomePage {
   }
 
   loadItems() {
-    this.dataService.getItems().subscribe(
+    this.dataService.getItems()
+      .subscribe(
       items => this.items = items,
       error => this.errorMessage = <any>error
     );
   }
 
   removeItem(id) {
-    this.dataService.removeItem(id);  
+    this.dataService.removeItem(id);
   }
 
   shareItem(item) {
@@ -60,6 +61,7 @@ export class HomePage {
   }
 
   editItem(item, index) {
+    console.log("Edit Item - ", item, index);
     const toast = this.toastCtrl.create({
       message: 'Editing Item - ' + index + " ...",
       duration: 3000
@@ -69,6 +71,7 @@ export class HomePage {
   }  
 
   addItem() {
+    console.log("Adding Item")
     this.inputDialogService.showPrompot();
   }
 }

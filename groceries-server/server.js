@@ -46,6 +46,18 @@ app.get('/api/groceries', function (req, res) {
     });
 });
 
+
+// Get one grocery item with ID
+app.get('/api/groceries/:id', function (req, res) {
+    
+    Grocery.find({_id: req.params.id}, function (err, groceries) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(groceries); 
+    });
+});
+
 // Create a grocery Item
 app.post('/api/groceries', function (req, res) {
 

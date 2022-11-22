@@ -63,8 +63,8 @@ var GroceriesServiceProvider = /** @class */ (function () {
     };
     GroceriesServiceProvider.prototype.removeItem = function (id) {
         var _this = this;
-        console.log("### Remove Item -d = ", id);
-        this.http.delete(this.baseURL + "/api/groceries/").subscribe(function (res) {
+        console.log("### Remove Item -id = ", id);
+        this.http.delete(this.baseURL + '/api/groceries' + id).subscribe(function (res) {
             _this.items = res;
             _this.dataChangeSubject.next(true);
         });
@@ -158,7 +158,7 @@ var TabsPage = /** @class */ (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\tabs\tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Grocery" tabIcon="cart"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\tabs\tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\tabs\tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Grocery" tabIcon="cart"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -193,7 +193,7 @@ var AboutPage = /** @class */ (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\about\about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  This should be about this app and I am going to put some contents later on.\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\about\about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\about\about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  This should be about this app and I am going to put some contents later on.\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], AboutPage);
@@ -228,7 +228,7 @@ var ContactPage = /** @class */ (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\contact\contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\contact\contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\contact\contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], ContactPage);
@@ -285,7 +285,8 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.loadItems = function () {
         var _this = this;
-        this.dataService.getItems().subscribe(function (items) { return _this.items = items; }, function (error) { return _this.errorMessage = error; });
+        this.dataService.getItems()
+            .subscribe(function (items) { return _this.items = items; }, function (error) { return _this.errorMessage = error; });
     };
     HomePage.prototype.removeItem = function (id) {
         this.dataService.removeItem(id);
@@ -306,6 +307,7 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.editItem = function (item, index) {
+        console.log("Edit Item - ", item, index);
         var toast = this.toastCtrl.create({
             message: 'Editing Item - ' + index + " ...",
             duration: 3000
@@ -314,15 +316,17 @@ var HomePage = /** @class */ (function () {
         this.inputDialogService.showPrompot(item, index);
     };
     HomePage.prototype.addItem = function () {
+        console.log("Adding Item");
         this.inputDialogService.showPrompot();
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{title}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <h3 class="no-item" text-center\n  *ngIf="items.length === 0">No\n    items available on the list!</h3>\n  <!--  showing a list of grocery items below that-->\n  <ion-list>\n    <ion-item-sliding\n      *ngFor="let item of items; let i = index">\n      <ion-item>\n        <h2>{{item.name}}</h2>\n        <p style>{{item.quantity}}</p>\n      </ion-item>\n      <ion-item-options>\n        <button\n          (click)="editItem(item, i)"\n          ion-button color="primary"\n          icon-start>\n          <ion-icon name="create">\n          </ion-icon>\n          Edit\n        </button>\n\n        <button\n          (click)="shareItem(item, i)"\n          ion-button color="light"\n          icon-start>\n          <ion-icon name="share">\n          </ion-icon>\n          share\n        </button>\n\n        <button\n          (click)="removeItem(item, i)"\n          ion-button color="secondary"\n          icon-start>\n          <ion-icon name="trash">\n          </ion-icon>\n          Done\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n  <!--  list of grocery items ends here -->\n\n  <!--  fab for adding things to your app -->\n  <ion-fab bottom right>\n    <button (click)="addItem()" ion-fab\n      mini>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{title}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <h3 class="no-item" text-center\n  *ngIf="items.length === 0">No\n    items available on the list!</h3>\n  <!--  showing a list of grocery items below that-->\n  <ion-list>\n    <ion-item-sliding\n      *ngFor="let item of items; let i = index">\n      <ion-item style="background-color: rgb(127, 228, 223)">\n        <h2 style="display: inline">{{item.name}}</h2>\n        <p>{{item.quantity}}</p>\n      </ion-item>\n      <ion-item-options>\n        <button\n          (click)="editItem(item, i)"\n          ion-button color="primary"\n          icon-start>\n          <ion-icon name="create">\n          </ion-icon>\n          Edit\n        </button>\n\n        <button\n          (click)="shareItem(item, i)"\n          ion-button color="light"\n          icon-start>\n          <ion-icon name="share">\n          </ion-icon>\n          share\n        </button>\n\n        <button\n          (click)="removeItem(item, i)"\n          ion-button color="secondary"\n          icon-start>\n          <ion-icon name="trash">\n          </ion-icon>\n          Done\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n  <!--  list of grocery items ends here -->\n\n  <!--  fab for adding things to your app -->\n  <ion-fab bottom right>\n    <button (click)="addItem()" ion-fab\n      mini>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_groceries_service_groceries_service__["a" /* GroceriesServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__providers_input_dialog_service_input_dialog_service__["a" /* InputDialogServiceProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_social_sharing__["a" /* SocialSharing */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_groceries_service_groceries_service__["a" /* GroceriesServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_groceries_service_groceries_service__["a" /* GroceriesServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_input_dialog_service_input_dialog_service__["a" /* InputDialogServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_input_dialog_service_input_dialog_service__["a" /* InputDialogServiceProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_social_sharing__["a" /* SocialSharing */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_social_sharing__["a" /* SocialSharing */]) === "function" && _f || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -362,11 +366,11 @@ var InputDialogServiceProvider = /** @class */ (function () {
         console.log('Hello InputDialogServiceProvider Provider');
     }
     InputDialogServiceProvider.prototype.showPrompot = function (item, index) {
+        // let itemId = ''
+        // if(item){
+        //   itemId = item._id;
+        // }
         var _this = this;
-        var itemId = '';
-        if (item) {
-            itemId = item._id;
-        }
         var prompt = this.alertCtrl.create({
             title: item ? 'Edit Item' : "Add Item",
             message: item ? "Please Edit item..." : "Please enter item name...",
@@ -386,19 +390,21 @@ var InputDialogServiceProvider = /** @class */ (function () {
             buttons: [
                 {
                     text: 'Cancel',
-                    handler: function (item) {
+                    handler: function (data) {
                         console.log('Cancel clicked');
                     }
                 },
                 {
                     text: 'Save',
-                    handler: function (item) {
-                        console.log('Saved clicked', item);
+                    handler: function (data) {
+                        console.log('Saved clicked', data);
                         if (index !== undefined) {
+                            item.name = data.name;
+                            item.quantity = data.quantity;
                             _this.dataService.editItem(item, index);
                         }
                         else {
-                            _this.dataService.addItem(item);
+                            _this.dataService.addItem(data);
                         }
                     }
                 }
@@ -408,10 +414,9 @@ var InputDialogServiceProvider = /** @class */ (function () {
     };
     InputDialogServiceProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_groceries_service_groceries_service__["a" /* GroceriesServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_groceries_service_groceries_service__["a" /* GroceriesServiceProvider */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__providers_groceries_service_groceries_service__["a" /* GroceriesServiceProvider */]])
     ], InputDialogServiceProvider);
     return InputDialogServiceProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=input-dialog-service.js.map
@@ -550,7 +555,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\ruth\Documents\SWDV_665_GitHub_repos\week-6-groceries-app-restful-services-ruthshimay1\groceries\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\Ruth\Documents\week_6_gitRepo\week_6_groceries_app_restf_services_ruth\groceries\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
